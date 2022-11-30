@@ -3,11 +3,15 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - ExpenseTracker</title>
+    <title>Expense Tracker</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <!-- Syncfusion ASP.NET Core controls styles -->
     @*<link rel="stylesheet" href="https://cdn.syncfusion.com/ej2/20.3.56/material.css" />*@
     <link href="https://cdn.syncfusion.com/ej2/20.3.56/bootstrap5-dark.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/ExpenseTracker.styles.css" asp-append-version="true" />
     <!-- Syncfusion ASP.NET Core controls scripts -->
@@ -35,17 +39,45 @@
             </div>
         </nav>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <main role="main" class="pb-3">
+                    <div class="row">
+                        <div class="col-md-7">
+                            <div class="d-flex flex-column mb-5">
+                                <div class="d-flex mb-1">
+                                    <div class="flex-grow-1">
+                                        <h3 class="fw-bold">@ViewData["PageTitle"]</h3>
+                                    </div>
+
+                                    <div>
+                                        @if (@ViewData["PageActionText"] != null)
+                                        {
+                                            <a class="btn btn-success" href="@ViewData["PageActionUrl"]">
+                                                @ViewData["PageActionText"]
+                                            </a>
+                                        }
+                                    </div>
+                                </div>
+
+                                @*breadcrumb*@
+                                <ejs-breadcrumb id="breadcrumb" separatorTemplate="@Html.Raw("<span class='fa-solid fa-angle-right'></span>")">
+                                </ejs-breadcrumb>
+                            </div>
+                        </div>
+                    </div>
+                    @RenderBody()
+                </main>
+            </div>
+        </div>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2022 - ExpenseTracker - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
+    @* <footer class="border-top footer text-muted">
+    <div class="container">
+    &copy; 2022 - ExpenseTracker - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    </div>
+    </footer>*@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

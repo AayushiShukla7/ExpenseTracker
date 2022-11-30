@@ -16,5 +16,15 @@ namespace ExpenseTracker.Models
 
         [Column(TypeName = "nvarchar(10)")]
         public string Type { get; set; } = "Expense";
+
+        // [NotMapped] means this property has nothing to do with the database table structure
+        [NotMapped]
+        public string? TitleWithIcon
+        {
+            get
+            {
+                return this.Icon + " " + this.Title;
+            }
+        }
     }
 }

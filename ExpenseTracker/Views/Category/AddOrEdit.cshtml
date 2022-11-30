@@ -1,17 +1,16 @@
 ﻿@model ExpenseTracker.Models.Category
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["PageTitle"] = @Model.CategoryId == 0 ? "Create a New Category" : "Edit Category";
 }
 
-<h1>Create</h1>
-
-<h4>Category</h4>
-<hr />
 <div class="row">
-    <div class="col-md-4">
-        <form asp-action="AddOrEdit">
+    <div class="col-md-7">
+        <div class="widget p-5">
+            <form asp-action="AddOrEdit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" name="CategoryId" value="@Model.CategoryId" />
+
             <div class="mb-3">
                 <div class='e-btn-group custom-rbt-group'>
                     <input type="radio" id="radioleft" name="Type" value="Expense" checked="@(Model.Type=="Expense")" />
@@ -34,16 +33,24 @@
                 <ejs-textbox id="icon" placeholder="Icon" ejs-for="@Model.Icon" floatLabelType="Auto"></ejs-textbox>
                 <span asp-validation-for="Icon" class="text-danger"></span>
             </div>            
-            <div class="mb-3">
+            @*<div class="mb-3">
                 <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
+            </div>*@
+            <ejs-button id="submit" typeof="submit" content="Submit" cssClass="e-success"></ejs-button>
         </form>
+        </div>
+    </div>
+
+    <div class="col-md-5">
+        <div class="widget h-100 d-flex justify-content-center align-items-center" style="background-color:#212b36">
+            <i class="fa-solid fa-shapes fa-2xl"></i>
+        </div>
     </div>
 </div>
 
-<div>
+@*<div>
     <a asp-action="Index">Back to List</a>
-</div>
+</div>*@
 
 @section Scripts {
     @{
