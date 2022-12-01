@@ -21,25 +21,24 @@
 
                 @*Category Id*@
                 <div class="mb-3">
-                    <ejs-dropdownlist id="ddlCategory" ejs-for="CategoryId" dataSource="@ViewBag.Categories" placeholder="Category" floatLabelType="Auto">
-                        <e-dropdownlist-fields value="CategoryId" text="TitleWithIcon">
-
-                        </e-dropdownlist-fields>
+                    <ejs-dropdownlist id="ddlCategory" ejs-for="CategoryId" dataSource="@ViewBag.Categories" placeholder="Category" floatLabelType="Auto" allowFiltering="true" ignoreAccent="true" filterType="Contains" popupHeight="220px">
+                        <e-dropdownlist-fields value="CategoryId" text="TitleWithIcon"></e-dropdownlist-fields>
                     </ejs-dropdownlist>
                 </div>
 
+                @*Amount*@
                 <div class="mb-3">
-                    <label asp-for="Amount" class="control-label"></label>
-                    <input asp-for="Amount" class="form-control" />
+                    <ejs-numerictextbox id="amount" ejs-for="Amount" Type="text" placeholder="Amount" floatLabelType="Auto" min=0 format="c0"></ejs-numerictextbox>
                     <span asp-validation-for="Amount" class="text-danger"></span>
                 </div>
 
+                @*Notes - Remarks or description*@
                 <div class="mb-3">
-                    <label asp-for="Note" class="control-label"></label>
-                    <input asp-for="Note" class="form-control" />
+                    <ejs-textbox id="note" placeholder="Note" ejs-for="Note" floatLabelType="Auto" multiline="true"></ejs-textbox>
                     <span asp-validation-for="Note" class="text-danger"></span>
                 </div>
 
+                @*Submit button*@
                 <ejs-button id="submit" typeof="submit" content="Submit" cssClass="e-success"></ejs-button>
             </form>
         </div>
