@@ -29,13 +29,11 @@
                     @*This now has a shortcut for name and value under one attribute*@
                     @*<ejs-textbox id="title" placeholder="Title" name="Title" value="@Model.Title" floatLabelType="Auto"></ejs-textbox>*@
                     <ejs-textbox id="title" placeholder="Title" ejs-for="@Model.Title" floatLabelType="Auto"></ejs-textbox>
-
-                    <span asp-validation-for="Title" class="text-danger"></span>
+                    <span asp-validation-for="Title" class="text-danger fs-6"></span>
                 </div>
                 
                 <div class="mb-3">
                     <ejs-textbox id="icon" placeholder="Icon" ejs-for="@Model.Icon" floatLabelType="Auto"></ejs-textbox>
-                    <span asp-validation-for="Icon" class="text-danger"></span>
                 </div>
                
                 <ejs-button id="submit" typeof="submit" content="Submit" cssClass="e-success"></ejs-button>
@@ -54,8 +52,8 @@
     <a asp-action="Index">Back to List</a>
 </div>*@
 
-@section Scripts {
+@*@section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
-}
+}*@

@@ -10,9 +10,11 @@ namespace ExpenseTracker.Models
         public int TransactionId { get; set; }
 
         //CategoryID - Foreign Key
+        [Range(1, int.MaxValue, ErrorMessage ="Please select a category.")]
         public int CategoryId { get; set; }
         public Category? Category { get; set; } // This is called a Navigational Property
 
+        [Range(1, int.MaxValue, ErrorMessage = "Amount should be greater than 0.")]
         public int Amount { get; set; }
 
         [Column(TypeName = "nvarchar(75)")]
