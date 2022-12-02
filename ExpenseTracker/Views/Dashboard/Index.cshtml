@@ -58,6 +58,7 @@
 
 @*Doughnut and Spline Chart*@
 <div class="row mb-4">
+    @*Doughnut Chart*@
     <div class="col-md-4">
         <div class="widget chart">
             <div class="p-4">
@@ -68,7 +69,7 @@
                 
                 @*Chart*@
                 <e-accumulation-series-collection>
-                    <e-accumulation-series dataSource="ViewBag.DoughnutChartData" xName="categoryTitleWithIcon" yName="amount" innerRadius="40%" legendShape="Circle">                        
+                    <e-accumulation-series dataSource="ViewBag.DoughnutChartData" xName="categoryTitleWithIcon" yName="amount" innerRadius="40%" legendShape="Circle" palettes=@(new string[]{"#0e8d76","#a4b219","#cb9b00","#8a442c","#0454b5","#7d0a0a","#822690","#4c2090","#313e93","#0096ac"})>
                         <e-accumulationseries-datalabel name="formattedAmount" visible></e-accumulationseries-datalabel>
                     </e-accumulation-series>
                 </e-accumulation-series-collection>
@@ -85,6 +86,52 @@
         </div>
     </div>
 
+    @*Spline Chart*@
     <div class="col-md-8">
+        <div class="widget chart">
+            <div class="p-4">
+                <h5>Income Vs Expense</h5>
+            </div>
+
+            @*Custom color - palettes=@(new string[] { "green", "red" })*@
+            <ejs-chart id="spline-chart" background="#1a222b" palettes=@(new string[]{"#54ffa9","#FF0000"})>
+
+                <e-chart-primaryxaxis valueType="Category">
+                    <e-majorgridlines width="0"></e-majorgridlines>
+                    <e-majorticklines width="0"></e-majorticklines>
+                </e-chart-primaryxaxis>
+
+                <e-chart-primaryyaxis>
+                    @*Custom horizontal lines*@
+                    <e-majorgridlines width="1" color="#32414d" dashArray="2,4"></e-majorgridlines>
+                    <e-majorticklines width="0"></e-majorticklines>
+                    <e-linestyle width="0"></e-linestyle>
+                </e-chart-primaryyaxis>
+
+                @*Remove chart border*@
+                <e-chart-chartarea>
+                    <e-chartarea-border width="0"></e-chartarea-border>
+                </e-chart-chartarea>
+
+                <e-series-collection>
+
+                    @*Income Series*@
+                    <e-series dataSource="ViewBag.SplineChartData" xName="day" yName="income" name="Income" type="@Syncfusion.EJ2.Charts.ChartSeriesType.Spline" width="3"></e-series>
+
+                    @*Expense Series*@
+                    <e-series dataSource="ViewBag.SplineChartData" xName="day" yName="expense" name="Expense" type="@Syncfusion.EJ2.Charts.ChartSeriesType.Spline" width="3"></e-series>
+
+                </e-series-collection>
+
+                @*Headers on top of the chart [With toggle enabled]*@
+                <e-chart-legendsettings position="Top" alignment="Far" toggleVisibility="false">
+                    <e-legendsettings-textstyle color="#fff" size="1rem"></e-legendsettings-textstyle>
+                </e-chart-legendsettings>
+
+                @*Tooltip on Chart*@
+                <e-chart-tooltipsettings enable shared></e-chart-tooltipsettings>
+
+            </ejs-chart>
+        </div>
     </div>
 </div>
