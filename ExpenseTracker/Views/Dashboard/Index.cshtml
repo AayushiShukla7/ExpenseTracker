@@ -1,0 +1,90 @@
+﻿@{
+    ViewData["IsDashboard"] = true;
+}
+
+@*TODO - Add dropdowns to filter the transactions by date (Make date range customizable)*@
+
+@*Summary Widgets*@
+<div class="row mb-4">
+
+    @*Total Income*@
+    <div class="col-md-4">
+        <div class="d-flex flex-row widget summary income">
+
+            <div class="d-flex flex-column justify-content-center p-5">
+                <i class="fa-solid fa-dollar-sign fa-2xl"></i>
+            </div>
+
+            <div class="d-flex flex-column m-auto py-3">
+                <span class="lead">Total Income</span>
+                <h1 class="display-6 fw-bold">@ViewBag.TotalIncome</h1>
+            </div>
+
+        </div>
+    </div>
+
+    @*Total Expense*@
+    <div class="col-md-4">
+        <div class="d-flex flex-row widget summary expense">
+
+            <div class="d-flex flex-column justify-content-center p-5">
+                <i class="fa-solid fa-dollar-sign fa-2xl"></i>
+            </div>
+
+            <div class="d-flex flex-column m-auto py-3">
+                <span class="lead">Total Expense</span>
+                <h1 class="display-6 fw-bold">@ViewBag.TotalExpense</h1>
+            </div>
+
+        </div>
+    </div>
+
+    @*Balance*@
+    <div class="col-md-4">
+        <div class="d-flex flex-row widget summary balance">
+
+            <div class="d-flex flex-column justify-content-center p-5">
+                <i class="fa-solid fa-dollar-sign fa-2xl"></i>
+            </div>
+
+            <div class="d-flex flex-column m-auto py-3">
+                <span class="lead">Balance</span>
+                <h1 class="display-6 fw-bold">@ViewBag.Balance</h1>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@*Doughnut and Spline Chart*@
+<div class="row mb-4">
+    <div class="col-md-4">
+        <div class="widget chart">
+            <div class="p-4">
+                <h5>Expense By Category</h5>
+            </div>
+
+            <ejs-accumulationchart id="doughnutchart" background="#1a222b" enableSmartLabels>
+                
+                @*Chart*@
+                <e-accumulation-series-collection>
+                    <e-accumulation-series dataSource="ViewBag.DoughnutChartData" xName="categoryTitleWithIcon" yName="amount" innerRadius="40%" legendShape="Circle">                        
+                        <e-accumulationseries-datalabel name="formattedAmount" visible></e-accumulationseries-datalabel>
+                    </e-accumulation-series>
+                </e-accumulation-series-collection>
+
+                @*Headers on top of the chart [With toggle enabled]*@
+                <e-accumulationchart-legendsettings position="Top">
+                    <e-legendsettings-textstyle color="#fff" size="1rem"></e-legendsettings-textstyle>
+                </e-accumulationchart-legendsettings>
+
+                @*Tooltip on Chart*@
+                <e-accumulationchart-tooltipsettings enable></e-accumulationchart-tooltipsettings>
+
+            </ejs-accumulationchart>
+        </div>
+    </div>
+
+    <div class="col-md-8">
+    </div>
+</div>
