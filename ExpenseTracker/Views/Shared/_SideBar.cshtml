@@ -2,15 +2,100 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
+	List<Object> menuItems = new List<Object>();
+
+	//Grouping - Group #1
+	menuItems.Add(new
+	{
+		text = "General",
+		seperator = true
+	});
+
+	menuItems.Add(new
+	{
+		text = "Dashboard",
+		url = "/",
+		iconCss = "fa-solid fa-chart-line",
+	});
+
+	menuItems.Add(new
+	{
+		text = "Categories",
+		url = "/Category",
+		iconCss = "fa-solid fa-folder-closed",
+		//items = new List<object>()
+		//{
+		//	new { text = "Open" },
+		//	new { text = "Save" },
+		//	new { text = "Exit" }
+		//}
+	});
+
+	menuItems.Add(new
+	{
+		text = "Transactions",
+		url = "/Transaction",
+		iconCss = "fa-solid fa-arrow-right-arrow-left",
+	});
+
+	//Grouping - Group #2
+	menuItems.Add(new
+	{
+		text = "Extras",
+		seperator = true
+	});
+
+	menuItems.Add(new
+	{
+		text = "Reports",
+		url = "#",
+		iconCss = "fa-solid fa-chart-simple",
+	});
+
+	menuItems.Add(new
+	{
+		text = "Settings",
+		url = "#",
+		iconCss = "fa-solid fa-gear",
+	});
 }
 
 
 <!-- sidebar element declaration -->
-<ejs-sidebar id="sidebar" width="290px">
-	@*<e-content-template>
-		<div class="title-header">
-			<div style="display:inline-block"> Sidebar </div>
+<ejs-sidebar id="sidebar" width="290px" enableDock dockSize="125px">
+	<e-content-template>
+
+		@*Logo*@
+		<div class="logo-wrapper">
+			<div class="app-logo">
+				<img src="~/logo.png" />
+			</div>
+			<div class="w-100"></div>
+			<i id="sidebar-toggler" class="fa-solid"></i>
 		</div>
-	</e-content-template>*@
+
+		@*Logged-in User Details*@
+		<div class="profile-wrapper">
+			<img class="profile-pic" src="~/AvatarMaker_Small.png" />
+			<div class="titles d-flex flex-column ps-3">
+				<h6 class="mb-0">Wallet App</h6>
+				<span class="text-muted">Jane Doe</span>
+			</div>
+		</div>
+
+		@*Sidebar Menu*@
+		<ejs-menu id="menu" items="menuItems" orientation="Vertical" hamburgerMode></ejs-menu>
+
+	</e-content-template>
 </ejs-sidebar>
 <!-- end of sidebar element -->
+
+<script>
+	document.addEventListener('DOMContentLoaded', function() {
+		dockBar = document.getElementById('sidebar').ej2_instances[0];
+
+		document.getElementById('sidebar-toggler').onclick = function () {
+			dockBar.toggle();
+		}
+	})
+</script>

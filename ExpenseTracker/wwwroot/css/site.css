@@ -274,7 +274,7 @@ img.profile-pic {
     #sidebar-toggler:hover {
         cursor: pointer;
         background-color: #48545f14;
-        transform: scale(1.05) translateZ(0px);
+        transform: scale(1.5) translateZ(0px);
     }
 
 #sidebar.e-close {
