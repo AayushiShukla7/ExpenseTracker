@@ -16,6 +16,8 @@ namespace ExpenseTracker.Controllers
 
         public async Task<ActionResult> Index()
         {
+            #region Last 7 days transactions
+
             //Last 7 days transactions
             DateTime StartDate = DateTime.Today.AddDays(-6);
             DateTime EndDate = DateTime.Today;
@@ -25,11 +27,19 @@ namespace ExpenseTracker.Controllers
                 .Where(x => x.Date >= StartDate && x.Date <= EndDate)
                 .ToListAsync();
 
+            #endregion Last 7 days transactions
+
+            #region Total Income
+
             //Total Income
             int TotalIncome = SelectedTransactions
                 .Where(i => i.Category.Type == "Income")
                 .Sum(x => x.Amount);
             ViewBag.TotalIncome = TotalIncome.ToString("C0");   // C0 -> Currency with 0 decimal precision (no decimal values)
+
+            #endregion Total Income
+
+            #region Total Expense
 
             //Total Expense
             int TotalExpense = SelectedTransactions
@@ -37,11 +47,19 @@ namespace ExpenseTracker.Controllers
                 .Sum(x => x.Amount);
             ViewBag.TotalExpense = TotalExpense.ToString("C0");
 
+            #endregion Total Expense
+
+            #region Balance Amount
+
             //Balance Amount
             int Balance = TotalIncome - TotalExpense;
             CultureInfo culture = CultureInfo.CreateSpecificCulture("en-US");
             culture.NumberFormat.CurrencyNegativePattern = 1;   //To avoid seeing negative balance (enclosed in brackets)
             ViewBag.Balance = string.Format(culture, "{0:C0}", Balance);
+
+            #endregion Balance Amount
+
+            #region Doughnut Chart  - Expense by category
 
             //Doughnut Chart  - Expense by category
             ViewBag.DoughnutChartData = SelectedTransactions
@@ -55,6 +73,10 @@ namespace ExpenseTracker.Controllers
                 })
                 .OrderByDescending(l => l.amount)
                 .ToList();
+
+            #endregion Doughnut Chart  - Expense by category
+
+            #region Spline Chart  - Income Vs Expense
 
             /* Spline Chart  - Income Vs Expense */
             //Income
@@ -97,6 +119,18 @@ namespace ExpenseTracker.Controllers
                                       })
                                       .ToList();
 
+            #endregion Spline Chart  - Income Vs Expense
+
+            #region Recent Transactions
+
+            //Recent Transactions
+            ViewBag.RecentTransactions = await _context.Transactions
+                .Include(x => x.Category)
+                .OrderByDescending(i => i.Date)
+                .Take(5)
+                .ToListAsync();
+
+            #endregion Recent Transactions
 
             return View();
         }

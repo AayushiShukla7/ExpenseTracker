@@ -11,10 +11,9 @@ html {
 html {
     position: relative;
     min-height: 100%;
-    font-family: "Inter", sans-serif;
+    font-family: "Inter";
 }
 
-/* Exclude Font Awesome Icons and SyncFusion Icons */
 *:not(.fa-solid):not(.fa):not(.e-icons) {
     font-family: "Inter"
 }
@@ -23,10 +22,11 @@ body {
     margin-bottom: 60px;
     background-color: #12161d;
     color: #fff;
+    overflow: hidden;
 }
 
 .e-bigger {
-    font-size: large;
+    font-size: x-large;
 }
 
 .main-content {
@@ -34,6 +34,7 @@ body {
     overflow-y: auto;
     height: 92vh;
 }
+
 
 /*BreadCrumb*/
 .e-breadcrumb a, .e-breadcrumb a:hover {
@@ -125,6 +126,109 @@ body {
     border-bottom-right-radius: 5px;
 }
 
+/*Logo*/
+.logo-wrapper {
+    height: 70px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.app-logo {
+    padding: 10px 10px;
+}
+
+/*Menu*/
+#menu {
+    width: 100% !important;
+    background-color: inherit;
+    overflow: hidden;
+}
+
+    #menu .e-menu-item:not(.e-separator) {
+        height: 50px;
+        border-radius: 4px;
+    }
+
+    #menu .e-menu-item {
+        box-sizing: border-box;
+    }
+
+        #menu .e-menu-item a {
+            width: 100%;
+            color: rgb(171, 163, 152);
+            font-weight: 300;
+            padding: 7px 5px;
+            box-sizing: border-box;
+        }
+
+    #menu .e-anchor-wrap {
+        display: inline-block;
+    }
+
+    #menu .e-menu-item .e-anchor-wrap span.e-menu-icon {
+        color: rgb(171, 163, 152);
+    }
+
+    #menu .e-menu-item.e-separator {
+        border: none;
+        margin: 5px 5px;
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: 13px;
+        color: #65da41;
+    }
+
+        #menu .e-menu-item.e-separator:not(:first-child) {
+            margin-top: 35px;
+        }
+
+
+
+/*Navbar*/
+nav.navbar {
+    background-color: rgba(18, 22, 29);
+}
+
+    nav.navbar i {
+        padding: 10px;
+        border-radius: 50%;
+        font-size: 1.2rem;
+        cursor: pointer;
+    }
+
+        nav.navbar i:hover, nav.navbar img:hover {
+            cursor: pointer;
+            background-color: #48545f14;
+            transform: scale(1.5) translateZ(0px);
+        }
+
+nav.navbar {
+    margin-left: 290px;
+}
+
+/*Profile Pic*/
+img.profile-pic {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+}
+
+.profile-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: rgba(72, 84, 95, 0.12);
+    padding: 16px 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    margin-bottom: 30px;
+}
+
+    .profile-wrapper .titles {
+        line-height: 1;
+    }
+
 /*Radio Button Group*/
 .e-btn-group.custom-rbt-group {
     width: 100%;
@@ -190,6 +294,7 @@ body {
         display: none !important;
     }
 
+
     #sidebar.e-open .e-anchor-wrap,
     #sidebar.e-close .e-menu-icon, #sidebar.e-open .e-menu-icon {
         visibility: visible;
@@ -218,29 +323,29 @@ body {
     background-color: #1a222b;
 }
 
-.widget.summary > div:first-child {
-    background-color: #222b33;
-    padding: 1rem;
-    border-top-left-radius: 1rem;
-    border-bottom-left-radius: 1rem;
-}
+    .widget.summary > div:first-child {
+        background-color: #222b33;
+        padding: 1rem;
+        border-top-left-radius: 1rem;
+        border-bottom-left-radius: 1rem;
+    }
 
-.widget.summary > div:first-child i {
-    font-weight: bold;
-}
+        .widget.summary > div:first-child i {
+            font-weight: bold;
+        }
 
-.widget.income > div:first-child {
-    color: #65da41;
-}
+    .widget.income > div:first-child {
+        color: #65da41;
+    }
 
-.widget.expense > div:first-child {
-    color: #ff4e48;
-}
+    .widget.expense > div:first-child {
+        color: #ff4e48;
+    }
 
-.widget.balance > div:first-child {
-    color: #2aa1ff;
-}
+    .widget.balance > div:first-child {
+        color: #2aa1ff;
+    }
 
-.widget.chart {
-    padding: 5px;
-}
+    .widget.chart {
+        padding: 5px;
+    }
